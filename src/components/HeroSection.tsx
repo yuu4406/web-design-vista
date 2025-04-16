@@ -1,10 +1,42 @@
 
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
+  const [raindrops, setRaindrops] = useState<Array<{id: number, left: string, delay: string, duration: string}>>([]);
+  
+  useEffect(() => {
+    // Create raindrops
+    const drops = [];
+    for (let i = 0; i < 40; i++) {
+      drops.push({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        delay: `${Math.random() * 5}s`,
+        duration: `${0.5 + Math.random() * 0.7}s`
+      });
+    }
+    setRaindrops(drops);
+  }, []);
+
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-background to-muted relative overflow-hidden">
+      {/* Rainfall Animation */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {raindrops.map(drop => (
+          <div
+            key={drop.id}
+            className="rain-drop"
+            style={{
+              left: drop.left,
+              animationDelay: drop.delay,
+              animationDuration: drop.duration
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Ocean Wave Animation */}
       <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
         <div className="wave-animation">
@@ -26,6 +58,19 @@ const HeroSection = () => {
               className="text-design-blue/40 dark:text-design-light-blue/40" 
               d="M0,288L48,272C96,256,192,224,288,229.3C384,235,480,277,576,277.3C672,277,768,235,864,224C960,213,1056,235,1152,229.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
             </path>
+          </svg>
+        </div>
+      </div>
+
+      {/* 3D Ocean Wave */}
+      <div className="absolute bottom-10 left-0 right-0 overflow-hidden pointer-events-none">
+        <div className="ocean-wave-animation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full">
+            <path
+              fill="currentColor"
+              className="text-design-blue/15 dark:text-design-light-blue/20"
+              d="M0,32L48,42.7C96,53,192,75,288,69.3C384,64,480,32,576,32C672,32,768,64,864,80C960,96,1056,96,1152,80C1248,64,1344,32,1392,16L1440,0L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+            ></path>
           </svg>
         </div>
       </div>
