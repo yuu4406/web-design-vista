@@ -98,18 +98,86 @@
   }
   
   .btn-primary {
-    @apply bg-design-blue text-white px-6 py-3 rounded-md font-medium hover:bg-blue-600 transition-colors duration-300;
+    @apply bg-design-blue text-white px-6 py-3 rounded-md font-medium hover:bg-blue-600 transition-colors duration-300 dark:bg-design-light-blue dark:text-gray-900;
   }
   
   .btn-outline {
-    @apply border-2 border-design-blue text-design-blue px-6 py-3 rounded-md font-medium hover:bg-design-blue hover:text-white transition-colors duration-300;
+    @apply border-2 border-design-blue text-design-blue px-6 py-3 rounded-md font-medium hover:bg-design-blue hover:text-white transition-colors duration-300 dark:border-design-light-blue dark:text-design-light-blue dark:hover:bg-design-light-blue dark:hover:text-gray-900;
   }
   
   .card-service {
-    @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
   }
   
   .section-padding {
     @apply py-16 md:py-24;
   }
+}
+
+/* Wave animations */
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes wave-slow {
+  0% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.wave-animation {
+  animation: wave 10s ease-in-out infinite;
+  width: 200%;
+}
+
+.wave-animation-slow {
+  animation: wave-slow 15s ease-in-out infinite;
+  width: 200%;
+}
+
+/* Floating animation for elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Page transitions */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
 }
