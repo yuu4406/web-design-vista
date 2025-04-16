@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -226,6 +227,51 @@
 
 .ocean-wave-animation {
   animation: ocean-wave 8s ease-in-out infinite;
+}
+
+/* Sun and Moon animations */
+@keyframes sunrays {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 166, 0, 0.2),
+                0 0 0 10px rgba(255, 166, 0, 0.1),
+                0 0 0 20px rgba(255, 166, 0, 0.05);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 166, 0, 0.2),
+                0 0 0 15px rgba(255, 166, 0, 0.1),
+                0 0 0 25px rgba(255, 166, 0, 0.05);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(255, 166, 0, 0.2),
+                0 0 0 10px rgba(255, 166, 0, 0.1),
+                0 0 0 20px rgba(255, 166, 0, 0.05);
+    transform: scale(1);
+  }
+}
+
+@keyframes moonshine {
+  0% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05) rotate(5deg);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.sun-animation {
+  animation: sunrays 4s ease-in-out infinite;
+}
+
+.moon-animation {
+  animation: moonshine 6s ease-in-out infinite;
 }
 
 /* Floating animation for elements */

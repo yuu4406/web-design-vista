@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
@@ -7,6 +7,11 @@ import { useTheme } from '@/hooks/use-theme';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -72,26 +77,69 @@ const Navbar = () => {
           <a href="#about" className="text-foreground/80 hover:text-design-blue dark:hover:text-design-light-blue transition-colors">About Us</a>
           <a href="#contact" className="text-foreground/80 hover:text-design-blue dark:hover:text-design-light-blue transition-colors">Contact</a>
           <Button className="bg-design-blue hover:bg-design-deep-purple dark:bg-design-light-blue dark:hover:bg-design-blue dark:text-gray-900">Get a Quote</Button>
+          
+          {/* Theme toggle button with sun/moon animations */}
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={toggleTheme} 
-            className="rounded-full"
+            className="relative rounded-full overflow-hidden group"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {isMounted && (
+              <>
+                {theme === 'dark' ? (
+                  <div className="relative flex items-center justify-center w-full h-full">
+                    <div className="absolute w-4 h-4 rounded-full bg-[#FEFCD3] z-0 group-hover:scale-110 transition-transform duration-300"></div>
+                    <Moon 
+                      size={18} 
+                      className="relative z-10 text-design-blue transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1" 
+                    />
+                  </div>
+                ) : (
+                  <div className="relative flex items-center justify-center w-full h-full">
+                    <div className="absolute w-6 h-6 rounded-full bg-[#FEF7CD] opacity-70 animate-pulse z-0 group-hover:scale-110 transition-transform duration-300"></div>
+                    <Sun 
+                      size={20} 
+                      className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
+                    />
+                  </div>
+                )}
+              </>
+            )}
           </Button>
         </div>
 
         <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile theme toggle button with sun/moon animations */}
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={toggleTheme} 
-            className="rounded-full"
+            className="relative rounded-full overflow-hidden group"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {isMounted && (
+              <>
+                {theme === 'dark' ? (
+                  <div className="relative flex items-center justify-center w-full h-full">
+                    <div className="absolute w-4 h-4 rounded-full bg-[#FEFCD3] z-0 group-hover:scale-110 transition-transform duration-300"></div>
+                    <Moon 
+                      size={18} 
+                      className="relative z-10 text-design-blue transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1" 
+                    />
+                  </div>
+                ) : (
+                  <div className="relative flex items-center justify-center w-full h-full">
+                    <div className="absolute w-6 h-6 rounded-full bg-[#FEF7CD] opacity-70 animate-pulse z-0 group-hover:scale-110 transition-transform duration-300"></div>
+                    <Sun 
+                      size={20} 
+                      className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
+                    />
+                  </div>
+                )}
+              </>
+            )}
           </Button>
           <button onClick={toggleMenu} className="p-2">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
