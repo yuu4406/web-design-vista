@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Moon, Sun, Waves } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
 
 const Navbar = () => {
@@ -30,6 +30,28 @@ const Navbar = () => {
             </path>
           </svg>
         </div>
+      </div>
+
+      {/* Left side wave decoration */}
+      <div className="absolute left-0 top-0 bottom-0 w-[150px] overflow-hidden pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 500" className="h-full" preserveAspectRatio="none">
+          <path
+            d="M0,100 C30,120 70,90 100,100 C130,110 170,80 200,100 L200,0 L0,0 Z"
+            fill="currentColor"
+            className="text-design-blue/20 dark:text-design-light-blue/20"
+          />
+        </svg>
+      </div>
+
+      {/* Right side wave decoration */}
+      <div className="absolute right-0 top-0 bottom-0 w-[150px] overflow-hidden pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 500" className="h-full" preserveAspectRatio="none">
+          <path
+            d="M0,100 C30,80 70,110 100,100 C130,90 170,120 200,100 L200,0 L0,0 Z"
+            fill="currentColor"
+            className="text-design-blue/20 dark:text-design-light-blue/20"
+          />
+        </svg>
       </div>
 
       <div className="container-custom flex justify-between items-center relative z-10">

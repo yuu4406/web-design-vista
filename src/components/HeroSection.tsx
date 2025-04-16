@@ -30,6 +30,32 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Left side wave decoration */}
+      <div className="absolute left-0 top-0 bottom-0 w-[120px] overflow-hidden pointer-events-none">
+        <div className="side-wave-animation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 800" className="h-full" preserveAspectRatio="none">
+            <path
+              d="M0,100 C20,140 40,120 60,100 C80,80 100,120 100,160 V800 H0 Z"
+              fill="currentColor"
+              className="text-design-blue/10 dark:text-design-light-blue/10"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Right side wave decoration */}
+      <div className="absolute right-0 top-0 bottom-0 w-[120px] overflow-hidden pointer-events-none">
+        <div className="side-wave-animation" style={{ animationDelay: '1s' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 800" className="h-full" preserveAspectRatio="none">
+            <path
+              d="M0,160 C0,120 20,80 40,100 C60,120 80,140 100,100 V800 H0 Z"
+              fill="currentColor"
+              className="text-design-blue/10 dark:text-design-light-blue/10"
+            />
+          </svg>
+        </div>
+      </div>
+
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">

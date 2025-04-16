@@ -139,6 +139,18 @@
   }
 }
 
+@keyframes side-wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .wave-animation {
   animation: wave 10s ease-in-out infinite;
   width: 200%;
@@ -147,6 +159,10 @@
 .wave-animation-slow {
   animation: wave-slow 15s ease-in-out infinite;
   width: 200%;
+}
+
+.side-wave-animation {
+  animation: side-wave 6s ease-in-out infinite;
 }
 
 /* Floating animation for elements */
