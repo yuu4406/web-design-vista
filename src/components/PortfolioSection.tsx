@@ -3,57 +3,57 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 
-const categories = ['Tất cả', 'E-Commerce', 'Doanh nghiệp', 'Landing Page', 'Ứng dụng Web'];
+const categories = ['All', 'E-Commerce', 'Business', 'Landing Page', 'Web Application'];
 
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Thời Trang',
+    title: 'Fashion E-Commerce',
     category: 'E-Commerce',
     image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80',
-    description: 'Website bán hàng thời trang với giao diện hiện đại và tối ưu trải nghiệm người dùng.'
+    description: 'Fashion e-commerce website with modern interface and optimized user experience.'
   },
   {
     id: 2,
-    title: 'Công ty Bất Động Sản',
-    category: 'Doanh nghiệp',
+    title: 'Real Estate Company',
+    category: 'Business',
     image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80',
-    description: 'Website giới thiệu dự án bất động sản với thiết kế sang trọng.'
+    description: 'Real estate project presentation website with elegant design.'
   },
   {
     id: 3,
-    title: 'Landing Page Sản Phẩm',
+    title: 'Product Landing Page',
     category: 'Landing Page',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80',
-    description: 'Landing page giới thiệu sản phẩm mới với tỷ lệ chuyển đổi cao.'
+    description: 'New product landing page with high conversion rate.'
   },
   {
     id: 4,
-    title: 'Hệ Thống Quản Lý',
-    category: 'Ứng dụng Web',
+    title: 'Management System',
+    category: 'Web Application',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80',
-    description: 'Ứng dụng web quản lý nhân sự và tài chính cho doanh nghiệp.'
+    description: 'HR and finance management web application for businesses.'
   },
   {
     id: 5,
-    title: 'Cửa Hàng Điện Tử',
+    title: 'Electronics Store',
     category: 'E-Commerce',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80',
-    description: 'Website bán hàng điện tử với đầy đủ tính năng giỏ hàng, thanh toán.'
+    description: 'Electronics e-commerce website with cart and payment features.'
   },
   {
     id: 6,
-    title: 'Website Công ty Luật',
-    category: 'Doanh nghiệp',
+    title: 'Law Firm Website',
+    category: 'Business',
     image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80',
-    description: 'Website công ty luật với giao diện chuyên nghiệp, uy tín.'
+    description: 'Professional and reputable law firm website.'
   }
 ];
 
 const PortfolioSection = () => {
-  const [activeCategory, setActiveCategory] = useState('Tất cả');
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredProjects = activeCategory === 'Tất cả'
+  const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(project => project.category === activeCategory);
 
@@ -61,9 +61,9 @@ const PortfolioSection = () => {
     <section id="portfolio" className="section-padding">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Dự Án Tiêu Biểu</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Khám phá các dự án tiêu biểu mà chúng tôi đã thực hiện
+            Explore the featured projects we have completed
           </p>
         </div>
 
@@ -109,7 +109,7 @@ const PortfolioSection = () => {
 
         <div className="text-center mt-12">
           <Button variant="outline" className="border-design-blue text-design-blue hover:bg-design-blue hover:text-white">
-            Xem thêm dự án
+            View more projects
           </Button>
         </div>
       </div>

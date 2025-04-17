@@ -26,8 +26,8 @@ const ContactSection = () => {
     console.log('Form submitted:', formData);
     
     toast({
-      title: "Gửi thành công!",
-      description: "Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.",
+      title: "Sent successfully!",
+      description: "We will contact you as soon as possible.",
     });
     
     // Reset form
@@ -44,9 +44,9 @@ const ContactSection = () => {
     <section id="contact" className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Liên Hệ Với Chúng Tôi</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn để tư vấn giải pháp phù hợp nhất
+            Leave your information and we'll contact you to provide the most suitable solution
           </p>
         </div>
 
@@ -55,11 +55,11 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-medium">Họ tên</label>
+                  <label htmlFor="name" className="block text-sm font-medium">Full Name</label>
                   <Input 
                     id="name"
                     name="name"
-                    placeholder="Nguyễn Văn A"
+                    placeholder="John Doe"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -83,22 +83,22 @@ const ContactSection = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="block text-sm font-medium">Số điện thoại</label>
+                  <label htmlFor="phone" className="block text-sm font-medium">Phone Number</label>
                   <Input 
                     id="phone"
                     name="phone"
-                    placeholder="0xxxxxxxxx"
+                    placeholder="+1 234 567 890"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="block text-sm font-medium">Tiêu đề</label>
+                  <label htmlFor="subject" className="block text-sm font-medium">Subject</label>
                   <Input 
                     id="subject"
                     name="subject"
-                    placeholder="Thiết kế website"
+                    placeholder="Website design"
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full"
@@ -107,11 +107,11 @@ const ContactSection = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-medium">Nội dung</label>
+                <label htmlFor="message" className="block text-sm font-medium">Message</label>
                 <Textarea 
                   id="message"
                   name="message"
-                  placeholder="Mô tả yêu cầu của bạn..."
+                  placeholder="Describe your requirements..."
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -120,13 +120,13 @@ const ContactSection = () => {
               </div>
 
               <Button type="submit" className="bg-design-blue hover:bg-design-deep-purple w-full md:w-auto">
-                <Send className="mr-2 h-4 w-4" /> Gửi tin nhắn
+                <Send className="mr-2 h-4 w-4" /> Send Message
               </Button>
             </form>
           </div>
 
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-6">Thông tin liên hệ</h3>
+            <h3 className="text-xl font-bold mb-6">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
@@ -134,7 +134,7 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 text-design-blue" />
                 </div>
                 <div>
-                  <p className="font-medium">Điện thoại</p>
+                  <p className="font-medium">Phone</p>
                   <p className="text-gray-600">+84 123 456 789</p>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-600">info@webvista.com</p>
+                  <p className="text-gray-600">info@ruatech.com</p>
                 </div>
               </div>
               
@@ -154,16 +154,16 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-design-blue" />
                 </div>
                 <div>
-                  <p className="font-medium">Địa chỉ</p>
-                  <p className="text-gray-600">123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p>
+                  <p className="font-medium">Address</p>
+                  <p className="text-gray-600">123 Nguyen Hue Street, District 1, Ho Chi Minh City</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
-              <h4 className="font-medium mb-3">Giờ làm việc</h4>
-              <p className="text-gray-600">Thứ 2 - Thứ 6: 8:00 - 17:30</p>
-              <p className="text-gray-600">Thứ 7: 8:00 - 12:00</p>
+              <h4 className="font-medium mb-3">Working Hours</h4>
+              <p className="text-gray-600">Monday - Friday: 8:00 - 17:30</p>
+              <p className="text-gray-600">Saturday: 8:00 - 12:00</p>
             </div>
           </div>
         </div>

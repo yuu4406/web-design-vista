@@ -9,11 +9,11 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <span className="text-design-purple font-heading text-xl font-bold">Web</span>
-              <span className="text-design-light-blue font-heading text-xl font-bold">Vista</span>
+              <span className="text-design-purple font-heading text-xl font-bold">Rua</span>
+              <span className="text-design-light-blue font-heading text-xl font-bold">Tech</span>
             </div>
             <p className="text-gray-400 mb-6">
-              Chúng tôi cung cấp dịch vụ thiết kế và phát triển web chuyên nghiệp, giúp doanh nghiệp của bạn thành công trong thế giới kỹ thuật số.
+              We provide professional web design and development services to help your business succeed in the digital world.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -33,40 +33,40 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Dịch vụ</h3>
+            <h3 className="text-lg font-bold mb-6">Services</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Thiết kế UI/UX</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Phát triển Web</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Thiết kế Responsive</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">UI/UX Design</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Responsive Design</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Web Application</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Thiết kế đồ họa</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Graphic Design</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">SEO Optimization</a></li>
             </ul>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Liên kết nhanh</h3>
+            <h3 className="text-lg font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Về chúng tôi</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Dự án</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Đội ngũ</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Tuyển dụng</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Liên hệ</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Nhận thông tin</h3>
+            <h3 className="text-lg font-bold mb-6">Newsletter</h3>
             <p className="text-gray-400 mb-4">
-              Đăng ký nhận bản tin của chúng tôi để cập nhật thông tin mới nhất
+              Subscribe to our newsletter to receive the latest updates
             </p>
             <div className="flex">
               <input
                 type="email"
-                placeholder="Email của bạn"
+                placeholder="Your email"
                 className="bg-gray-800 text-white px-4 py-2 rounded-l-md flex-grow focus:outline-none focus:ring-1 focus:ring-design-blue"
               />
               <button className="bg-design-blue hover:bg-design-deep-purple transition-colors px-4 py-2 rounded-r-md">
@@ -78,10 +78,10 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-12 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2025 WebVista. Bản quyền thuộc về công ty.</p>
+            <p className="text-gray-400 text-sm">© 2025 Rua Tech. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm">Chính sách bảo mật</a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm">Điều khoản sử dụng</a>
+              <a href="#" className="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-white text-sm">Terms of Use</a>
               <a href="#" className="text-gray-400 hover:text-white text-sm">Sitemap</a>
             </div>
           </div>

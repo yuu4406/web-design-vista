@@ -78,7 +78,7 @@ const Navbar = () => {
           <a href="#contact" className="text-foreground/80 hover:text-design-blue dark:hover:text-design-light-blue transition-colors">Contact</a>
           <Button className="bg-design-blue hover:bg-design-deep-purple dark:bg-design-light-blue dark:hover:bg-design-blue dark:text-gray-900">Get a Quote</Button>
           
-          {/* Theme toggle button with sun/moon animations */}
+          {/* Theme toggle button with simplified animation */}
           <Button 
             variant="ghost" 
             size="icon" 
@@ -89,21 +89,15 @@ const Navbar = () => {
             {isMounted && (
               <>
                 {theme === 'dark' ? (
-                  <div className="relative flex items-center justify-center w-full h-full">
-                    <div className="absolute w-4 h-4 rounded-full bg-[#FEFCD3] z-0 group-hover:scale-110 transition-transform duration-300"></div>
-                    <Moon 
-                      size={18} 
-                      className="relative z-10 text-design-blue transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1" 
-                    />
-                  </div>
+                  <Moon 
+                    size={18} 
+                    className="relative z-10 text-design-light-blue transition-all duration-300 group-hover:rotate-45" 
+                  />
                 ) : (
-                  <div className="relative flex items-center justify-center w-full h-full">
-                    <div className="absolute w-6 h-6 rounded-full bg-[#FEF7CD] opacity-70 animate-pulse z-0 group-hover:scale-110 transition-transform duration-300"></div>
-                    <Sun 
-                      size={20} 
-                      className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
-                    />
-                  </div>
+                  <Sun 
+                    size={20} 
+                    className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
+                  />
                 )}
               </>
             )}
@@ -111,7 +105,7 @@ const Navbar = () => {
         </div>
 
         <div className="md:hidden flex items-center space-x-2">
-          {/* Mobile theme toggle button with sun/moon animations */}
+          {/* Mobile theme toggle button with simplified animation */}
           <Button 
             variant="ghost" 
             size="icon" 
@@ -122,21 +116,15 @@ const Navbar = () => {
             {isMounted && (
               <>
                 {theme === 'dark' ? (
-                  <div className="relative flex items-center justify-center w-full h-full">
-                    <div className="absolute w-4 h-4 rounded-full bg-[#FEFCD3] z-0 group-hover:scale-110 transition-transform duration-300"></div>
-                    <Moon 
-                      size={18} 
-                      className="relative z-10 text-design-blue transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1" 
-                    />
-                  </div>
+                  <Moon 
+                    size={18} 
+                    className="relative z-10 text-design-light-blue transition-all duration-300 group-hover:rotate-45" 
+                  />
                 ) : (
-                  <div className="relative flex items-center justify-center w-full h-full">
-                    <div className="absolute w-6 h-6 rounded-full bg-[#FEF7CD] opacity-70 animate-pulse z-0 group-hover:scale-110 transition-transform duration-300"></div>
-                    <Sun 
-                      size={20} 
-                      className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
-                    />
-                  </div>
+                  <Sun 
+                    size={20} 
+                    className="relative z-10 text-[#F97316] transition-all duration-300 group-hover:rotate-45" 
+                  />
                 )}
               </>
             )}

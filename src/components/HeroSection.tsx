@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [raindrops, setRaindrops] = useState<Array<{id: number, left: string, delay: string, duration: string}>>([]);
+  const [bubbles, setBubbles] = useState<Array<{id: number, left: string, top: string, size: number}>>([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
     // Create raindrops
@@ -18,10 +20,72 @@ const HeroSection = () => {
       });
     }
     setRaindrops(drops);
+
+    // Add mouse move listener for bubbles
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      // Create a new bubble occasionally when mouse moves
+      if (Math.random() > 0.92) {
+        const newBubble = {
+          id: Date.now(),
+          left: `${e.clientX}px`,
+          top: `${e.clientY}px`,
+          size: 5 + Math.random() * 20
+        };
+        setBubbles(prev => [...prev.slice(-15), newBubble]); // Keep only the last 15 bubbles
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Create clouds animation
+    const createClouds = () => {
+      const clouds = document.querySelector('.clouds-container');
+      if (clouds) {
+        for (let i = 0; i < 5; i++) {
+          const cloud = document.createElement('div');
+          cloud.className = 'cloud-animation';
+          cloud.style.left = `${Math.random() * 100}%`;
+          cloud.style.top = `${Math.random() * 50}%`;
+          cloud.style.animationDelay = `${Math.random() * 10}s`;
+          cloud.style.opacity = `${0.4 + Math.random() * 0.3}`;
+          cloud.style.transform = `scale(${0.6 + Math.random() * 0.7})`;
+          clouds.appendChild(cloud);
+        }
+      }
+    };
+    
+    createClouds();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-background to-muted relative overflow-hidden">
+      {/* Clouds Animation */}
+      <div className="clouds-container absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Clouds will be added dynamically via JS */}
+      </div>
+      
+      {/* Sea Bubbles Animation */}
+      {bubbles.map(bubble => (
+        <div
+          key={bubble.id}
+          className="sea-bubble absolute rounded-full pointer-events-none z-10"
+          style={{
+            left: bubble.left,
+            top: bubble.top,
+            width: `${bubble.size}px`,
+            height: `${bubble.size}px`,
+            transform: 'translate(-50%, -50%)',
+            animation: `bubble-rise ${2 + Math.random() * 3}s ease-in-out forwards`
+          }}
+        />
+      ))}
+      
       {/* Rainfall Animation */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {raindrops.map(drop => (
@@ -105,7 +169,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              <span className="text-design-blue dark:text-design-light-blue">High-Quality</span> Web Design
+              <span className="text-design-blue dark:text-design-light-blue">Rua Tech</span> – Turning Your Ideas into Digital Reality
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 mb-8 max-w-lg">
               We create beautiful, modern, and optimized websites for your business.
