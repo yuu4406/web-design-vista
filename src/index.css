@@ -382,3 +382,41 @@
   opacity: 0;
   transition: opacity 300ms;
 }
+
+/* Turtle animations */
+@keyframes wave-hand {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes typing {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-wave {
+  animation: wave-hand 2s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+.animate-typing {
+  animation: typing 0.5s ease-in-out infinite;
+}
+
+.turtle-waving {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Desk setup animation */
+@keyframes appear {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.desk-setup {
+  animation: appear 1s ease-out;
+}

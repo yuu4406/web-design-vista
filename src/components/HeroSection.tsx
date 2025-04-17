@@ -7,6 +7,7 @@ const HeroSection = () => {
   const [raindrops, setRaindrops] = useState<Array<{id: number, left: string, delay: string, duration: string}>>([]);
   const [bubbles, setBubbles] = useState<Array<{id: number, left: string, top: string, size: number}>>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [animationStage, setAnimationStage] = useState(0);
   
   useEffect(() => {
     // Create raindrops
@@ -58,8 +59,29 @@ const HeroSection = () => {
     
     createClouds();
 
+    // Turtle animation sequence
+    let animationTimeout: ReturnType<typeof setTimeout>;
+    
+    const startAnimationSequence = () => {
+      // Start with empty stage
+      setAnimationStage(0);
+      
+      // After 1s, show turtle waving
+      animationTimeout = setTimeout(() => {
+        setAnimationStage(1);
+        
+        // After 2s more, show turtle at computer
+        animationTimeout = setTimeout(() => {
+          setAnimationStage(2);
+        }, 2000);
+      }, 1000);
+    };
+    
+    startAnimationSequence();
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(animationTimeout);
     };
   }, []);
 
@@ -186,11 +208,95 @@ const HeroSection = () => {
           </div>
           <div className="order-1 md:order-2 relative">
             <div className="bg-gradient-to-tr from-design-purple/20 to-design-blue/20 dark:from-design-purple/40 dark:to-design-blue/40 p-4 rounded-2xl shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80"
-                alt="Web Design Process"
-                className="w-full h-auto rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300"
-              />
+              <div className="w-full h-auto rounded-xl shadow-lg overflow-hidden">
+                {/* Turtle Animation Container */}
+                <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-800 rounded-xl">
+                  {/* Stage 0: Empty desk (initial) */}
+                  <div className={`absolute inset-0 transition-opacity duration-500 ${animationStage === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="flex items-center justify-center w-full h-full">
+                      <div className="w-3/4 h-1/2 bg-gray-200 dark:bg-gray-700 rounded-lg" style={{ backgroundImage: 'linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.05) 75%, transparent 75%, transparent)', backgroundSize: '40px 40px' }}>
+                        {/* Empty desk */}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Stage 1: Turtle waving */}
+                  <div className={`absolute inset-0 transition-opacity duration-500 ${animationStage === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="flex items-center justify-center w-full h-full">
+                      <div className="turtle-waving">
+                        <div className="turtle-body bg-green-500 w-32 h-24 rounded-full relative">
+                          <div className="turtle-head bg-green-600 w-16 h-16 rounded-full absolute -top-12 left-8 flex items-center justify-center">
+                            <div className="turtle-eye bg-white w-4 h-4 rounded-full absolute top-4 left-3">
+                              <div className="bg-black w-2 h-2 rounded-full absolute top-1 left-1"></div>
+                            </div>
+                            <div className="turtle-eye bg-white w-4 h-4 rounded-full absolute top-4 right-3">
+                              <div className="bg-black w-2 h-2 rounded-full absolute top-1 left-1"></div>
+                            </div>
+                            <div className="turtle-smile border-b-2 border-white w-8 h-2 rounded-b-full absolute bottom-3"></div>
+                          </div>
+                          <div className="turtle-shell bg-yellow-800 w-40 h-32 rounded-full absolute -top-4 -left-4 z-[-1]">
+                            <div className="bg-yellow-700 w-32 h-24 rounded-full absolute top-4 left-4"></div>
+                            <div className="bg-yellow-600 w-6 h-6 rounded-full absolute top-8 left-12"></div>
+                            <div className="bg-yellow-600 w-6 h-6 rounded-full absolute top-8 right-12"></div>
+                            <div className="bg-yellow-600 w-6 h-6 rounded-full absolute bottom-8 left-12"></div>
+                            <div className="bg-yellow-600 w-6 h-6 rounded-full absolute bottom-8 right-12"></div>
+                            <div className="bg-yellow-600 w-6 h-6 rounded-full absolute top-16 left-16"></div>
+                          </div>
+                          <div className="turtle-arm-left bg-green-600 w-6 h-16 rounded-full absolute top-2 -left-2 animate-wave">
+                            <div className="bg-green-700 w-5 h-5 rounded-full absolute -bottom-1 -left-1"></div>
+                          </div>
+                          <div className="turtle-arm-right bg-green-600 w-6 h-16 rounded-full absolute top-2 -right-2"></div>
+                          <div className="turtle-leg-left bg-green-600 w-6 h-10 rounded-full absolute bottom-2 left-4"></div>
+                          <div className="turtle-leg-right bg-green-600 w-6 h-10 rounded-full absolute bottom-2 right-4"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Stage 2: Turtle at computer */}
+                  <div className={`absolute inset-0 transition-opacity duration-500 ${animationStage === 2 ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="flex items-center justify-center w-full h-full">
+                      <div className="desk-setup relative w-3/4 h-1/2">
+                        {/* Desk */}
+                        <div className="w-full h-14 bg-yellow-800 rounded-lg absolute bottom-0"></div>
+                        
+                        {/* Computer */}
+                        <div className="laptop absolute left-1/2 bottom-14 transform -translate-x-1/2">
+                          <div className="laptop-screen w-40 h-28 bg-blue-50 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-t-lg flex items-center justify-center overflow-hidden">
+                            {/* Code on screen */}
+                            <div className="w-full p-2">
+                              <div className="h-2 w-20 bg-blue-400 dark:bg-blue-600 rounded mb-1"></div>
+                              <div className="h-2 w-32 bg-green-400 dark:bg-green-600 rounded mb-1"></div>
+                              <div className="h-2 w-24 bg-purple-400 dark:bg-purple-600 rounded mb-1"></div>
+                              <div className="h-2 w-28 bg-yellow-400 dark:bg-yellow-600 rounded mb-1"></div>
+                              <div className="h-2 w-16 bg-red-400 dark:bg-red-600 rounded mb-1"></div>
+                            </div>
+                          </div>
+                          <div className="laptop-base w-48 h-2 bg-gray-400 dark:bg-gray-700 rounded"></div>
+                        </div>
+                        
+                        {/* Turtle typing */}
+                        <div className="turtle-typing absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                          <div className="turtle-body bg-green-500 w-24 h-16 rounded-full relative">
+                            <div className="turtle-head bg-green-600 w-12 h-12 rounded-full absolute -top-8 left-6 flex items-center justify-center">
+                              <div className="turtle-eye bg-white w-3 h-3 rounded-full absolute top-3 left-2">
+                                <div className="bg-black w-1.5 h-1.5 rounded-full absolute top-0.75 left-0.75"></div>
+                              </div>
+                              <div className="turtle-eye bg-white w-3 h-3 rounded-full absolute top-3 right-2">
+                                <div className="bg-black w-1.5 h-1.5 rounded-full absolute top-0.75 left-0.75"></div>
+                              </div>
+                              <div className="turtle-smile border-b-2 border-white w-6 h-1 rounded-b-full absolute bottom-2"></div>
+                            </div>
+                            <div className="turtle-shell bg-yellow-800 w-30 h-20 rounded-full absolute -top-2 -left-3 z-[-1]"></div>
+                            <div className="turtle-arm-left bg-green-600 w-4 h-10 rounded-full absolute top-2 -left-1 animate-typing"></div>
+                            <div className="turtle-arm-right bg-green-600 w-4 h-10 rounded-full absolute top-2 -right-1 animate-typing" style={{ animationDelay: '0.1s' }}></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="absolute -bottom-10 -right-10 bg-design-purple dark:bg-design-light-blue dark:text-gray-900 text-white p-4 rounded-lg shadow-lg hidden md:block">
               <p className="font-bold">+500</p>
