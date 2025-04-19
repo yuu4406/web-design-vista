@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -190,7 +191,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              <span className="text-[#FF6B2C]">Rua Tech</span> – <span className="text-[#007BFF] dark:text-[#93C5FD]">Turning Your Ideas into Digital Reality</span>
+              <span className="text-[#FF6B2C]">Rua Tech</span> – <span className="text-[#007BFF]">Turning Your Ideas into Digital Reality</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 mb-8 max-w-lg">
               Rua Tech: Where Innovation Meets Precision in Web Development
