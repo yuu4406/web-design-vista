@@ -1,11 +1,6 @@
-
 import React from "react";
-import { 
-  Accordion, 
-  AccordionContent, 
-  AccordionItem, 
-  AccordionTrigger 
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const faqs = [
   {
@@ -35,9 +30,13 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  const isVisible = useScrollAnimation();
+
   return (
-    <section id="faq" className="bg-white dark:bg-gray-800 py-16 md:py-24">
-      <div className="container-custom max-w-4xl">
+    <section id="faq" className="bg-white dark:bg-gray-800 py-16 md:py-24" data-scroll>
+      <div className={`container-custom max-w-4xl transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center animate-fade-in">
           Simple answers to big questions.
         </h2>

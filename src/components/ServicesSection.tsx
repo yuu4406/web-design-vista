@@ -1,6 +1,6 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const services = [
   {
@@ -36,9 +36,13 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const isVisible = useScrollAnimation();
+
   return (
-    <section id="services" className="section-padding bg-gray-50">
-      <div className="container-custom">
+    <section id="services" className="section-padding bg-gray-50" data-scroll>
+      <div className={`container-custom transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">

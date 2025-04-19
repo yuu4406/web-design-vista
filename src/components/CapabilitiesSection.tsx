@@ -1,6 +1,6 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const categories = [
   {
@@ -30,9 +30,13 @@ const categories = [
 ];
 
 const CapabilitiesSection = () => {
+  const isVisible = useScrollAnimation();
+
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24">
-      <div className="container-custom">
+    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24" data-scroll>
+      <div className={`container-custom transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center animate-fade-in">
           Industries We Serve
         </h2>

@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -39,9 +39,13 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const isVisible = useScrollAnimation();
+
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 overflow-hidden">
-      <div className="container-custom">
+    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 overflow-hidden" data-scroll>
+      <div className={`container-custom transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center animate-fade-in">
           Our clients love working with us!
         </h2>

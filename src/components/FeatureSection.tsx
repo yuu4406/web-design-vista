@@ -1,5 +1,5 @@
-
 import { CheckCircle } from 'lucide-react';
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   "Exclusive, unique web designs",
@@ -13,9 +13,13 @@ const features = [
 ];
 
 const FeatureSection = () => {
+  const isVisible = useScrollAnimation();
+
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-design-purple/5 to-design-blue/5">
-      <div className="container-custom">
+    <section id="about" className="section-padding bg-gradient-to-br from-design-purple/5 to-design-blue/5" data-scroll>
+      <div className={`container-custom transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Us?</h2>

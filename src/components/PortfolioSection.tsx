@@ -1,7 +1,7 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const categories = ['All', 'E-Commerce', 'Business', 'Landing Page', 'Web Application'];
 
@@ -52,14 +52,17 @@ const projects = [
 
 const PortfolioSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const isVisible = useScrollAnimation();
 
   const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="portfolio" className="section-padding">
-      <div className="container-custom">
+    <section id="portfolio" className="section-padding" data-scroll>
+      <div className={`container-custom transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -67,7 +70,6 @@ const PortfolioSection = () => {
           </p>
         </div>
 
-        {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
             <Button 
@@ -81,7 +83,6 @@ const PortfolioSection = () => {
           ))}
         </div>
 
-        {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div 
