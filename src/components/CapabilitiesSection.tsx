@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -34,10 +35,10 @@ const CapabilitiesSection = () => {
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24" data-scroll>
-      <div className={`container-custom transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center animate-fade-in">
+      <div className={`container-custom transition-all duration-1000 ${
+        isVisible ? 'opacity-100' : 'opacity-30'
+      }`} style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           Industries We Serve
         </h2>
         
@@ -45,8 +46,13 @@ const CapabilitiesSection = () => {
           {categories.map((category, index) => (
             <Card 
               key={index}
-              className="bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 animate-fade-in"
-              style={{animationDelay: `${index * 100}ms`}}
+              className="bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300"
+              style={{
+                opacity: isVisible ? 1 : 0.3,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 800ms ease',
+                transitionDelay: `${index * 100}ms`
+              }}
             >
               <CardContent className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-design-blue dark:text-design-light-blue">

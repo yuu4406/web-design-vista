@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
@@ -60,9 +61,9 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" className="section-padding" data-scroll>
-      <div className={`container-custom transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
+      <div className={`container-custom transition-all duration-1000 ${
+        isVisible ? 'opacity-100' : 'opacity-30'
+      }`} style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -84,10 +85,16 @@ const PortfolioSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, index) => (
             <div 
               key={project.id} 
               className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              style={{
+                opacity: isVisible ? 1 : 0.2,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 800ms ease',
+                transitionDelay: `${index * 150}ms`
+              }}
             >
               <img 
                 src={project.image} 

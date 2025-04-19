@@ -7,20 +7,27 @@ export const useScrollAnimation = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        // Make the animation more gradual based on intersection ratio
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.15, // Slightly increased threshold for earlier detection
+        rootMargin: '0px 0px -100px 0px' // Trigger slightly before element is in full view
+      }
     );
 
-    const currentElement = document.querySelector('[data-scroll]');
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
+    // Observe all elements with data-scroll attribute
+    const elements = document.querySelectorAll('[data-scroll]');
+    elements.forEach(element => {
+      observer.observe(element);
+    });
 
     return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
+      elements.forEach(element => {
+        observer.unobserve(element);
+      });
     };
   }, []);
 
