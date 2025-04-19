@@ -8,6 +8,7 @@ const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageLoaded, setImageLoaded] = useState(false);
   const [pathProgress, setPathProgress] = useState(0);
+  const [showPath, setShowPath] = useState(true);
   
   useEffect(() => {
     // Create raindrops
@@ -47,6 +48,10 @@ const HeroSection = () => {
       if (progress >= 100) {
         clearInterval(animationInterval);
         setImageLoaded(true);
+        // Add a small delay before hiding the path
+        setTimeout(() => {
+          setShowPath(false);
+        }, 300);
       }
       setPathProgress(progress);
     }, 20);
@@ -182,22 +187,25 @@ const HeroSection = () => {
             <div className="bg-gradient-to-tr from-design-purple/20 to-design-blue/20 dark:from-design-purple/40 dark:to-design-blue/40 p-4 rounded-2xl shadow-xl">
               <div className="w-full h-auto rounded-xl shadow-lg overflow-hidden">
                 <div className="relative w-full aspect-video bg-gradient-to-b from-[#FFF5EB] to-[#FFE8D9] dark:from-gray-800 dark:to-gray-900 rounded-xl">
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 1000 600"
-                    style={{
-                      strokeDasharray: 2000,
-                      strokeDashoffset: 2000 - (2000 * pathProgress) / 100,
-                      transition: 'stroke-dashoffset 0.5s ease'
-                    }}
-                  >
-                    <path
-                      d="M100,300 Q500,100 900,300 T900,300"
-                      fill="none"
-                      stroke="#3B82F6"
-                      strokeWidth="2"
-                    />
-                  </svg>
+                  {showPath && (
+                    <svg
+                      className="absolute inset-0 w-full h-full transition-opacity duration-300"
+                      viewBox="0 0 1000 600"
+                      style={{
+                        strokeDasharray: 2000,
+                        strokeDashoffset: 2000 - (2000 * pathProgress) / 100,
+                        opacity: pathProgress === 100 ? 0 : 1,
+                        transition: 'stroke-dashoffset 0.5s ease, opacity 0.3s ease'
+                      }}
+                    >
+                      <path
+                        d="M100,300 Q500,100 900,300 T900,300"
+                        fill="none"
+                        stroke="#3B82F6"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  )}
                   
                   <img
                     src="/lovable-uploads/52a69897-4e95-4452-80f3-d72d27910eee.png"
