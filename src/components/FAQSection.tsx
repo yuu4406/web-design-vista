@@ -1,7 +1,11 @@
 
 import React from "react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { 
+  Accordion, 
+  AccordionContent, 
+  AccordionItem, 
+  AccordionTrigger 
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -31,31 +35,17 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const isVisible = useScrollAnimation();
-
   return (
-    <section id="faq" className="bg-white dark:bg-gray-800 py-16 md:py-24" data-scroll>
-      <div className={`container-custom max-w-4xl transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-30'
-      }`} style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+    <section id="faq" className="bg-white dark:bg-gray-800 py-16 md:py-24">
+      <div className="container-custom max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center animate-fade-in">
           Simple answers to big questions.
         </h2>
         
-        <div className="mt-12">
+        <div className="mt-12 animate-fade-in" style={{ animationDelay: "200ms" }}>
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`} 
-                className="border-b border-gray-200 dark:border-gray-700"
-                style={{
-                  opacity: isVisible ? 1 : 0.3,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                  transition: 'all 800ms ease',
-                  transitionDelay: `${index * 100}ms`
-                }}
-              >
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200 dark:border-gray-700">
                 <AccordionTrigger className="text-xl font-medium py-4 hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>

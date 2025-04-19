@@ -1,7 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const services = [
   {
@@ -37,13 +36,9 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const isVisible = useScrollAnimation();
-
   return (
-    <section id="services" className="section-padding bg-gray-50" data-scroll>
-      <div className={`container-custom transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-30'
-      }`} style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
+    <section id="services" className="section-padding bg-gray-50">
+      <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -53,16 +48,7 @@ const ServicesSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300 h-full"
-              style={{
-                opacity: isVisible ? 1 : 0.2,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 800ms ease',
-                transitionDelay: `${index * 100}ms`
-              }}
-            >
+            <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
               <CardHeader>
                 <div className="mb-4">{service.icon}</div>
                 <CardTitle className="text-xl font-bold">{service.title}</CardTitle>

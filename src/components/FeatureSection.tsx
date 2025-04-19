@@ -1,6 +1,5 @@
 
 import { CheckCircle } from 'lucide-react';
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   "Exclusive, unique web designs",
@@ -14,13 +13,9 @@ const features = [
 ];
 
 const FeatureSection = () => {
-  const isVisible = useScrollAnimation();
-
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-design-purple/5 to-design-blue/5" data-scroll>
-      <div className={`container-custom transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-20'
-      }`}>
+    <section id="about" className="section-padding bg-gradient-to-br from-design-purple/5 to-design-blue/5">
+      <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Us?</h2>
@@ -31,16 +26,7 @@ const FeatureSection = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {features.map((feature, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-start"
-                  style={{
-                    transitionDelay: `${index * 100}ms`,
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                    transition: 'all 800ms ease'
-                  }}
-                >
+                <div key={index} className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-design-blue shrink-0 mt-1 mr-2" />
                   <p>{feature}</p>
                 </div>
@@ -51,14 +37,7 @@ const FeatureSection = () => {
           <div className="relative">
             <div className="absolute -top-8 -left-8 w-40 h-40 bg-design-purple/10 rounded-full z-0"></div>
             <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-design-blue/10 rounded-full z-0"></div>
-            <div 
-              className="bg-white p-6 rounded-xl shadow-xl z-10 relative"
-              style={{
-                opacity: isVisible ? 1 : 0.3,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 1200ms ease'
-              }}
-            >
+            <div className="bg-white p-6 rounded-xl shadow-xl z-10 relative">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center bg-gray-50 p-6 rounded-lg">
                   <h3 className="text-4xl font-bold text-design-blue mb-2">10+</h3>

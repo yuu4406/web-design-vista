@@ -2,7 +2,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -40,13 +39,9 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const isVisible = useScrollAnimation();
-
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 overflow-hidden" data-scroll>
-      <div className={`container-custom transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-30'
-      }`} style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
+    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 overflow-hidden">
+      <div className="container-custom">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center animate-fade-in">
           Our clients love working with us!
         </h2>
@@ -55,13 +50,8 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
-              className="overflow-hidden hover:shadow-lg transition-all duration-300"
-              style={{
-                opacity: isVisible ? 1 : 0.3,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 800ms ease',
-                transitionDelay: `${index * 150}ms`
-              }}
+              className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in"
+              style={{animationDelay: `${index * 150}ms`}}
             >
               <CardContent className="p-6">
                 <div className="mb-6">
