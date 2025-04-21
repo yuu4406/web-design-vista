@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
 
@@ -92,7 +91,6 @@ const ServicesSection = () => {
           pointer-events: none;
           transition: opacity 0.38s, transform 0.6s cubic-bezier(.77, .2, .05, 1.0);
         }
-        /* Dịch vụ grid style */
         .services-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -154,30 +152,6 @@ const ServicesSection = () => {
           letter-spacing: 0px;
           font-weight: 500;
         }
-        /* Btn close grid */
-        .close-btn {
-          position: absolute; 
-          right: 16px; 
-          top: 16px;
-          background: #fff;
-          border-radius: 50%;
-          width: 36px; 
-          height: 36px; 
-          display: flex; 
-          align-items: center; 
-          justify-content: center;
-          box-shadow: 0 0.5px 2px rgba(60,90,180,0.08);
-          border: none;
-          font-size: 1.3rem;
-          color: #A2A5B6;
-          cursor: pointer;
-          z-index: 6;
-          transition: background 0.2s;
-        }
-        .close-btn:hover {
-          background: #f2f3fa;
-        }
-        /* Overlay fade bg effect */
         .services-overlay {
           background: rgba(220, 226, 245, 0.26);
           position: absolute;
@@ -228,14 +202,6 @@ const ServicesSection = () => {
         }}
       >
         <div className="relative bg-white/95 rounded-2xl py-8 px-4 md:px-8 w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-          <button
-            className="close-btn"
-            aria-label="Close services"
-            style={{ display: expanded ? "flex" : "none" }}
-            onClick={handleCollapse}
-          >
-            ×
-          </button>
           <div className="services-grid">
             {services.map((service, index) => (
               <div className="service-card group" key={index}>
