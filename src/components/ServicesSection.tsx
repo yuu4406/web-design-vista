@@ -98,6 +98,7 @@ const ServicesSection = () => {
           grid-template-columns: 1fr;
           gap: 32px;
           padding: 24px 6vw;
+          width: 100%;
           max-width: 940px;
           margin: 0 auto;
         }
@@ -218,7 +219,7 @@ const ServicesSection = () => {
       {/* Grid Service Cards */}
       <div
         className={
-          "absolute left-1/2 top-1/2 z-30 w-full max-w-[1040px] -translate-x-1/2 -translate-y-1/2 transition-all duration-500 " +
+          "fixed inset-0 z-30 flex items-center justify-center p-4 " +
           (expanded ? "service-grid-container" : "service-grid-container-hidden")
         }
         onMouseLeave={() => {
@@ -226,22 +227,24 @@ const ServicesSection = () => {
           if (window.innerWidth > 800) handleCollapse();
         }}
       >
-        <button
-          className="close-btn"
-          aria-label="Close services"
-          style={{ display: expanded ? "flex" : "none" }}
-          onClick={handleCollapse}
-        >
-          ×
-        </button>
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div className="service-card group" key={index}>
-              <div className="service-icon">{service.icon}</div>
-              <div className="service-title">{service.title}</div>
-              <div className="service-desc">{service.description}</div>
-            </div>
-          ))}
+        <div className="relative bg-white/95 rounded-2xl py-8 px-4 md:px-8 w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+          <button
+            className="close-btn"
+            aria-label="Close services"
+            style={{ display: expanded ? "flex" : "none" }}
+            onClick={handleCollapse}
+          >
+            ×
+          </button>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <div className="service-card group" key={index}>
+                <div className="service-icon">{service.icon}</div>
+                <div className="service-title">{service.title}</div>
+                <div className="service-desc">{service.description}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
