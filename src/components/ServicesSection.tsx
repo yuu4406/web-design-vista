@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
 
 const services = [
@@ -35,69 +36,39 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const [expanded, setExpanded] = useState(false);
-
-  // Xác định trạng thái hover (desktop) hoặc click (mobile)
-  const handleExpand = () => setExpanded(true);
-  const handleCollapse = () => setExpanded(false);
-
   return (
-    <section id="services" className="relative py-24 md:py-40 flex justify-center items-center bg-[#F6F7FA] transition-colors duration-500" style={{ minHeight: 540 }}>
+    <section
+      id="services"
+      className="relative py-24 md:py-40 flex justify-center items-center bg-[#F6F7FA] transition-colors duration-500 min-h-[560px]"
+    >
       <style>
         {`
-        .services-circle {
-          transition: all 0.7s cubic-bezier(.77, .2, .05, 1.0);
-          width: 340px;
-          height: 340px;
-          border-radius: 50%;
-          background: #fff;
-          box-shadow: 0 4px 32px 0 rgba(60,80,188,0.08), 0 1.5px 2.2px rgba(60,90,180,0.04);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          position: relative;
-        }
-        .services-circle .circle-title {
+        .services-section-title {
           font-size: 2.3rem;
           font-family: 'Montserrat', sans-serif;
           font-weight: 800;
           color: #232323;
           letter-spacing: -1px;
-          margin-bottom: 0.5rem;
-        }
-        .services-circle .circle-desc {
-          color: #65696D;
-          font-size: 1.1rem;
-          font-weight: 500;
+          margin-bottom: 0.7rem;
           text-align: center;
-          max-width: 250px;
         }
-        .service-grid-container {
-          opacity: 1;
-          transform: scale(1);
-          pointer-events: auto;
-          transition: opacity 0.55s, transform 0.7s cubic-bezier(.77, .2, .05, 1.0);
-        }
-        .service-grid-container-hidden {
-          opacity: 0;
-          transform: scale(0.8);
-          pointer-events: none;
-        }
-        .services-circle-hide {
-          opacity: 0;
-          transform: scale(0.85);
-          pointer-events: none;
-          transition: opacity 0.38s, transform 0.6s cubic-bezier(.77, .2, .05, 1.0);
+        .services-section-desc {
+          color: #65696D;
+          font-size: 1.14rem;
+          font-weight: 500;
+          max-width: 520px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 2.5rem;
+          text-align: center;
         }
         .services-grid {
           display: grid;
           grid-template-columns: 1fr;
           gap: 32px;
-          padding: 24px 6vw;
+          padding: 0 6vw;
           width: 100%;
-          max-width: 940px;
+          max-width: 990px;
           margin: 0 auto;
         }
         @media (min-width: 600px) {
@@ -152,65 +123,21 @@ const ServicesSection = () => {
           letter-spacing: 0px;
           font-weight: 500;
         }
-        .services-overlay {
-          background: rgba(220, 226, 245, 0.26);
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          border-radius: 9999px;
-          opacity: 1;
-        }
-        @media(max-width: 500px){
-          .services-circle {
-            width: 92vw;
-            height: 92vw;
-            min-width: 202px;
-            min-height: 202px;
-            max-width: 99vw;
-            max-height: 99vw;
-          }
-        }
         `}
       </style>
-      {/* Overlay fade effect khi mở grid */}
-      {expanded && <div className="services-overlay" onClick={handleCollapse} />}
-      {/* Circle UI ban đầu */}
-      <div
-        className={`services-circle z-10 mx-auto ${expanded ? "services-circle-hide" : ""}`}
-        tabIndex={0}
-        onMouseEnter={handleExpand}
-        onClick={handleExpand}
-        onTouchEnd={handleExpand}
-        onKeyDown={e => (e.key === "Enter" || e.key === " ") && handleExpand()}
-        aria-label="Our Services"
-        role="button"
-      >
-        <span className="circle-title">Our Services</span>
-        <div className="circle-desc">
+      <div className="w-full flex flex-col items-center justify-center">
+        <div className="services-section-title">Our Services</div>
+        <div className="services-section-desc">
           Providing complete web design and development services for your business
         </div>
-      </div>
-      {/* Grid Service Cards */}
-      <div
-        className={
-          "fixed inset-0 z-30 flex items-center justify-center p-4 " +
-          (expanded ? "service-grid-container" : "service-grid-container-hidden")
-        }
-        onMouseLeave={() => {
-          // Chỉ đóng khi ở desktop, không đóng trên mobile khi mouseleave.
-          if (window.innerWidth > 800) handleCollapse();
-        }}
-      >
-        <div className="relative bg-white/95 rounded-2xl py-8 px-4 md:px-8 w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <div className="service-card group" key={index}>
-                <div className="service-icon">{service.icon}</div>
-                <div className="service-title">{service.title}</div>
-                <div className="service-desc">{service.description}</div>
-              </div>
-            ))}
-          </div>
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <div className="service-card group" key={index}>
+              <div className="service-icon">{service.icon}</div>
+              <div className="service-title">{service.title}</div>
+              <div className="service-desc">{service.description}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
