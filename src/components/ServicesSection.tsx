@@ -127,8 +127,15 @@ const ServicesSection = () => {
       </style>
       <div className="w-full flex flex-col items-center justify-center">
         <div className="services-section-title">Our Services</div>
-        <div className="services-section-desc">
+        <div className="services-section-desc mb-8">
           Providing complete web design and development services for your business
+        </div>
+        <div className="w-full max-w-[1200px] px-4 mb-8">
+          <img 
+            src="/lovable-uploads/dd513f70-9ec3-4f42-ae9b-c3a7cbae9727.png" 
+            alt="Rua Tech Services" 
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
         </div>
         <div className="services-grid">
           {services.map((service, index) => (
