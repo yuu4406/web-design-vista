@@ -2,6 +2,7 @@
 import React from "react";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
 
+// Tương tự phần cũ
 const services = [
   {
     icon: <Layout className="h-8 w-8 text-[#3B82F6]" />,
@@ -35,12 +36,40 @@ const services = [
   }
 ];
 
+const flowerImg = "/public/lovable-uploads/2947a3e6-516a-48da-b7de-1f587b1d207d.png";
+
 const ServicesSection = () => {
   return (
     <section
       id="services"
       className="relative py-24 md:py-40 flex justify-center items-center bg-[#F6F7FA] transition-colors duration-500 min-h-[560px]"
     >
+      {/* BG hoa lá bên trái */}
+      <img
+        src={flowerImg}
+        className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0"
+        style={{
+          filter:
+            "drop-shadow(0 4px 24px rgba(59,130,246,0.08)) drop-shadow(0 0 0 #3B82F6)",
+          // blend màu xanh blue thay vì đen
+          mixBlendMode: "multiply",
+        }}
+        alt=""
+        aria-hidden="true"
+      />
+      {/* BG hoa lá bên phải, xoay ngang & oppacity thấp */}
+      <img
+        src={flowerImg}
+        className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0"
+        style={{
+          transform: "scaleX(-1) rotate(6deg)",
+          filter:
+            "drop-shadow(0 4px 24px rgba(59,130,246,0.08)) drop-shadow(0 0 0 #3B82F6)",
+          mixBlendMode: "multiply",
+        }}
+        alt=""
+        aria-hidden="true"
+      />
       <style>
         {`
         .services-section-title {
@@ -125,7 +154,7 @@ const ServicesSection = () => {
         }
         `}
       </style>
-      <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center relative z-10">
         <div className="services-section-title">Our Services</div>
         <div className="services-section-desc">
           Providing complete web design and development services for your business
@@ -145,3 +174,4 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
