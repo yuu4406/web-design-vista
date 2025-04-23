@@ -21,8 +21,8 @@ const MouseFollowerDot = () => {
       style={{
         left: mouse.x,
         top: mouse.y,
-        transform: "translate(-50%, -50%)",
-        transition: "left 60ms linear, top 60ms linear"
+        transform: "translate(-50%, -50%)"
+        // Removed the transition property to make it instantly follow the cursor
       }}
     >
       <CircleDot color={PURPLE} size={24} strokeWidth={3} />
@@ -31,4 +31,3 @@ const MouseFollowerDot = () => {
 };
 
 export default MouseFollowerDot;
-
