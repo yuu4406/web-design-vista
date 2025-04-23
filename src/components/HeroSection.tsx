@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -208,8 +209,8 @@ const HeroSection = () => {
                   )}
                   
                   <img
-                    src="/lovable-uploads/52a69897-4e95-4452-80f3-d72d27910eee.png"
-                    alt="Website Design Illustration"
+                    src="/lovable-uploads/e35fb580-7f87-46e4-bce1-32708a497ebd.png"
+                    alt="Rua Tech Website Design"
                     className={`w-full h-full object-contain transition-opacity duration-1000 ${
                       imageLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
@@ -229,3 +230,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
