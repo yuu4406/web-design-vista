@@ -1,8 +1,6 @@
-
 import React from "react";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
 
-// Tương tự phần cũ
 const services = [
   {
     icon: <Layout className="h-8 w-8 text-[#3B82F6]" />,
@@ -47,31 +45,67 @@ const ServicesSection = () => {
       {/* BG hoa lá bên trái */}
       <img
         src={flowerImg}
-        className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0"
+        className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0 animate-[growIn_1.5s_ease-out] hover:scale-110 transition-transform duration-700"
         style={{
           filter:
             "drop-shadow(0 4px 24px rgba(59,130,246,0.08)) drop-shadow(0 0 0 #3B82F6)",
-          // blend màu xanh blue thay vì đen
           mixBlendMode: "multiply",
+          animation: "floatLeaves 6s ease-in-out infinite",
         }}
         alt=""
         aria-hidden="true"
       />
-      {/* BG hoa lá bên phải, xoay ngang & oppacity thấp */}
+      {/* BG hoa lá bên phải */}
       <img
         src={flowerImg}
-        className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0"
+        className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0 animate-[growIn_1.5s_ease-out] hover:scale-110 transition-transform duration-700"
         style={{
           transform: "scaleX(-1) rotate(6deg)",
           filter:
             "drop-shadow(0 4px 24px rgba(59,130,246,0.08)) drop-shadow(0 0 0 #3B82F6)",
           mixBlendMode: "multiply",
+          animation: "floatLeavesReverse 7s ease-in-out infinite",
         }}
         alt=""
         aria-hidden="true"
       />
       <style>
         {`
+        @keyframes growIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+          }
+          to {
+            opacity: 0.3;
+            transform: scale(1) translateY(0);
+          }
+        }
+        
+        @keyframes floatLeaves {
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(3deg);
+          }
+          100% {
+            transform: translateY(0) rotate(0deg);
+          }
+        }
+        
+        @keyframes floatLeavesReverse {
+          0% {
+            transform: scaleX(-1) rotate(6deg) translateY(0);
+          }
+          50% {
+            transform: scaleX(-1) rotate(9deg) translateY(-15px);
+          }
+          100% {
+            transform: scaleX(-1) rotate(6deg) translateY(0);
+          }
+        }
+
         .services-section-title {
           font-size: 2.3rem;
           font-family: 'Montserrat', sans-serif;
@@ -174,4 +208,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
