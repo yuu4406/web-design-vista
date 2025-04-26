@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Layout, Code, Smartphone, Globe, PenTool, BarChart3, Leaf } from "lucide-react";
+import { Layout, Code, Smartphone, Globe, PenTool, BarChart3 } from "lucide-react";
 
 const services = [
   {
@@ -43,83 +42,93 @@ const ServicesSection = () => {
       id="services"
       className="relative py-24 md:py-40 flex justify-center items-center bg-[#F6F7FA] transition-colors duration-500 min-h-[560px]"
     >
-      {/* Left leaf */}
-      <div className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0">
-        <Leaf 
-          className="w-full h-full text-[#3B82F6]"
+      {/* Left pixel art */}
+      <div className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-80 z-0">
+        <div 
+          className="w-full h-full"
           style={{
-            filter: "drop-shadow(0 4px 24px rgba(59,130,246,0.08))",
-            mixBlendMode: "multiply",
-            transform: "scale(0)",
-            animation: "growAndSwayLeaf 3s ease-out forwards, swayLeaf 4s ease-in-out infinite 3s",
+            backgroundImage: `
+              linear-gradient(45deg, transparent 25%, #3B82F6 25%, #3B82F6 50%, transparent 50%, transparent 75%, #3B82F6 75%),
+              linear-gradient(-45deg, transparent 25%, #3B82F6 25%, #3B82F6 50%, transparent 50%, transparent 75%, #3B82F6 75%)
+            `,
+            backgroundSize: '24px 24px',
+            transform: 'scale(0)',
+            animation: 'pixelateAndFloat 3s ease-out forwards, floatPixels 4s ease-in-out infinite 3s',
+            filter: 'drop-shadow(0 4px 24px rgba(59,130,246,0.15))',
+            mixBlendMode: 'multiply',
           }}
         />
       </div>
 
-      {/* Right leaf */}
-      <div className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0">
-        <Leaf 
-          className="w-full h-full text-[#3B82F6]"
+      {/* Right pixel art */}
+      <div className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-80 z-0">
+        <div 
+          className="w-full h-full"
           style={{
-            transform: "scaleX(-1) rotate(6deg) scale(0)",
-            filter: "drop-shadow(0 4px 24px rgba(59,130,246,0.08))",
-            mixBlendMode: "multiply",
-            animation: "growAndSwayLeafReverse 3s ease-out forwards, swayLeafReverse 5s ease-in-out infinite 3s",
+            backgroundImage: `
+              linear-gradient(45deg, transparent 25%, #3B82F6 25%, #3B82F6 50%, transparent 50%, transparent 75%, #3B82F6 75%),
+              linear-gradient(-45deg, transparent 25%, #3B82F6 25%, #3B82F6 50%, transparent 50%, transparent 75%, #3B82F6 75%)
+            `,
+            backgroundSize: '24px 24px',
+            transform: 'scale(0)',
+            animation: 'pixelateAndFloatReverse 3s ease-out forwards, floatPixelsReverse 5s ease-in-out infinite 3s',
+            filter: 'drop-shadow(0 4px 24px rgba(59,130,246,0.15))',
+            mixBlendMode: 'multiply',
           }}
         />
       </div>
 
       <style>
         {`
-        @keyframes growAndSwayLeaf {
+        @keyframes pixelateAndFloat {
           0% {
-            transform: scale(0) translateY(20px);
+            transform: scale(0) translateY(20px) rotate(0deg);
             opacity: 0;
           }
           100% {
-            transform: scale(1) translateY(0);
-            opacity: 0.3;
+            transform: scale(1) translateY(0) rotate(360deg);
+            opacity: 0.8;
           }
         }
         
-        @keyframes growAndSwayLeafReverse {
+        @keyframes pixelateAndFloatReverse {
           0% {
-            transform: scaleX(-1) rotate(6deg) scale(0) translateY(20px);
+            transform: scale(0) translateY(20px) rotate(0deg);
             opacity: 0;
           }
           100% {
-            transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
-            opacity: 0.3;
+            transform: scale(1) translateY(0) rotate(-360deg);
+            opacity: 0.8;
           }
         }
 
-        @keyframes swayLeaf {
+        @keyframes floatPixels {
           0% {
             transform: scale(1) rotate(0deg) translateY(0);
           }
           33% {
-            transform: scale(1.05) rotate(5deg) translateY(-5px);
+            transform: scale(1.1) rotate(5deg) translateY(-10px);
           }
           66% {
-            transform: scale(1.05) rotate(-5deg) translateY(-5px);
+            transform: scale(1.1) rotate(-5deg) translateY(-10px);
           }
           100% {
             transform: scale(1) rotate(0deg) translateY(0);
           }
         }
 
-        @keyframes swayLeafReverse {
+        @keyframes floatPixelsReverse {
           0% {
-            transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
+            transform: scale(1) rotate(0deg) translateY(0);
           }
           33% {
-            transform: scaleX(-1) rotate(11deg) scale(1.05) translateY(-5px);
+            transform: scale(1.1) rotate(-5deg) translateY(-10px);
           }
           66% {
-            transform: scaleX(-1) rotate(1deg) scale(1.05) translateY(-5px);
+            transform: scale(1.1) rotate(5deg) translateY(-10px);
           }
           100% {
-            transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
+            transform: scale(1) rotate(0deg) translateY(0);
           }
         }
         `}
