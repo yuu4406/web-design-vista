@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Layout, Code, Smartphone, Globe, PenTool, BarChart3, Leaf } from "lucide-react";
 
@@ -43,34 +44,34 @@ const ServicesSection = () => {
       className="relative py-24 md:py-40 flex justify-center items-center bg-[#F6F7FA] transition-colors duration-500 min-h-[560px]"
     >
       {/* Left leaf */}
-      <div className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0 animate-[growIn_1.5s_ease-out]">
+      <div className="pointer-events-none select-none absolute left-0 top-4 md:top-12 w-[160px] md:w-[220px] opacity-30 z-0">
         <Leaf 
           className="w-full h-full text-[#3B82F6]"
           style={{
             filter: "drop-shadow(0 4px 24px rgba(59,130,246,0.08))",
             mixBlendMode: "multiply",
             transform: "scale(0)",
-            animation: "growLeaf 2s ease-out forwards",
+            animation: "growAndSwayLeaf 3s ease-out forwards, swayLeaf 4s ease-in-out infinite 3s",
           }}
         />
       </div>
 
       {/* Right leaf */}
-      <div className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0 animate-[growIn_1.5s_ease-out]">
+      <div className="pointer-events-none select-none absolute right-0 bottom-4 md:bottom-12 w-[160px] md:w-[220px] opacity-30 z-0">
         <Leaf 
           className="w-full h-full text-[#3B82F6]"
           style={{
             transform: "scaleX(-1) rotate(6deg) scale(0)",
             filter: "drop-shadow(0 4px 24px rgba(59,130,246,0.08))",
             mixBlendMode: "multiply",
-            animation: "growLeafReverse 2.5s ease-out forwards",
+            animation: "growAndSwayLeafReverse 3s ease-out forwards, swayLeafReverse 5s ease-in-out infinite 3s",
           }}
         />
       </div>
 
       <style>
         {`
-        @keyframes growLeaf {
+        @keyframes growAndSwayLeaf {
           0% {
             transform: scale(0) translateY(20px);
             opacity: 0;
@@ -81,7 +82,7 @@ const ServicesSection = () => {
           }
         }
         
-        @keyframes growLeafReverse {
+        @keyframes growAndSwayLeafReverse {
           0% {
             transform: scaleX(-1) rotate(6deg) scale(0) translateY(20px);
             opacity: 0;
@@ -89,6 +90,36 @@ const ServicesSection = () => {
           100% {
             transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
             opacity: 0.3;
+          }
+        }
+
+        @keyframes swayLeaf {
+          0% {
+            transform: scale(1) rotate(0deg) translateY(0);
+          }
+          33% {
+            transform: scale(1.05) rotate(5deg) translateY(-5px);
+          }
+          66% {
+            transform: scale(1.05) rotate(-5deg) translateY(-5px);
+          }
+          100% {
+            transform: scale(1) rotate(0deg) translateY(0);
+          }
+        }
+
+        @keyframes swayLeafReverse {
+          0% {
+            transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
+          }
+          33% {
+            transform: scaleX(-1) rotate(11deg) scale(1.05) translateY(-5px);
+          }
+          66% {
+            transform: scaleX(-1) rotate(1deg) scale(1.05) translateY(-5px);
+          }
+          100% {
+            transform: scaleX(-1) rotate(6deg) scale(1) translateY(0);
           }
         }
         `}
