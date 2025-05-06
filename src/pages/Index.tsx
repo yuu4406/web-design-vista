@@ -8,7 +8,6 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ContactSection from "@/components/ContactSection";
-import AIChatWidget from "@/components/AIChatWidget";
 import SeaBubbles from "@/components/SeaBubbles";
 import CloudAnimations from "@/components/CloudAnimations";
 import Footer from "@/components/Footer";
@@ -27,7 +26,6 @@ const Index = () => {
       <CapabilitiesSection />
       <ContactSection />
       <Footer />
-      <AIChatWidget />
       <SeaBubbles />
     </div>
   );
